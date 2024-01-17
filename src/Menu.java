@@ -1,10 +1,11 @@
 public class Menu {
-    public static void mostrarMenu(){
+    public static void muestaOpciones(){
         System.out.println("-----Menu-----");
-        System.out.println("1. Mostrar tareas");
-        System.out.println("2. Agregar tarea");
-        System.out.println("3. Completar tarea");
-        System.out.println("4. Salir");
-        System.out.println("Seleccione una opcion: ");
+        System.out.println("1. Crear nueva lista de tareas");
+        System.out.println("2. Ver listas de tareas");
+        System.out.println("3. Ver tareas de lista");
+        System.out.println("4. Actualizar lista de tareas");
+        System.out.println("5. Eliminar lista de tareas");
+        System.out.println("6. Salir ");
     }
 }

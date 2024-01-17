@@ -2,9 +2,18 @@ import java.util.Scanner;
 
 
 public class Lector {
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
-    public static short leerOpcion(){
-        return scanner.nextShort();
+    public static short leeOpcion(){
+        System.out.println("Opción: ");
+        return scanner.nextByte();
     }
+    public  static String leeCadena(){
+
+        System.out.println("Cadena: ");
+        return scanner.nextLine();
+
+    }
+
+
 }

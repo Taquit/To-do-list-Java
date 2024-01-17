@@ -5,30 +5,39 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        short opcionSelecionada;
+        Menu menu = new Menu();
+        Lector lector = new Lector();
+        ListasTareas lista = new ListasTareas();
+        byte opcionSelecionada = 0;
 
         do{
 
-            Menu.mostrarMenu();
-            opcionSelecionada = Lector.leerOpcion();
+            Menu.muestaOpciones();
+            opcionSelecionada = (byte) Lector.leeOpcion();
 
             switch (opcionSelecionada){
                 case 1:
-                    ListasTareas.mostrarTareas();
+                    lista.crearNuevaListas();
                     break;
                 case 2:
-                    ListasTareas.agregarTareas();
+                    lista.verListaTareas();
                     break;
                 case 3:
-                    ListasTareas.completarTarea();
+                    lista.verTareasDeLista();
                     break;
                 case 4:
-                    System.out.println("Saliendo de la aplicacion...");
+                    lista.actualizarListaDeTareas();
+                    break;
+                case 5:
+                    lista.elimarListaDeTareas();
+                    break;
+                case 6:
+                    System.out.println("Saliedno de la aplicacion.");
                     break;
                 default:
-                    System.out.println("Opcion no valida. Por favor, seleciona una opcion valida.");
+                    System.out.println("Opción desconocida.");
             }
-        } while (opcionSelecionada !=4);
+        } while (opcionSelecionada !=6);
 
 
     }
