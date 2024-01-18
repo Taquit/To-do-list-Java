@@ -10,9 +10,8 @@ public class ListasTareas {
     public void crearNuevaListas(){
         System.out.println("Crear nueva lista de tareas.");
         System.out.println("Introduzca nueva tarea: ");
-        String nombre = lector.leeCadena();
-
-        System.out.println(nombre);
+        String extra = Lector.lectorExtra();
+        String nombre = Lector.leeCadena();
         ListaTareas lista = new ListaTareas(nombre);
         listasTareas.add(lista);
     }
@@ -25,7 +24,7 @@ public class ListasTareas {
     }
     public void verListaTareas(){
 
-        System.out.println("Ver listas de tareas.");
+        System.out.println("Ver lista de tareas.");
         if(!validaExistenciaLista()){
             return;
         }
@@ -72,8 +71,9 @@ public class ListasTareas {
 
     }
     public void elimarListaDeTareas(){
+        System.out.println("Preuba12");
         int indice = validacIndice();
-        System.out.println("Elimar lista de tareas.");
+        System.out.println("------Elimar lista de tareas.-------");
         int lista = Lector.leeOpcion();
         ListaTareas listaEliminada = listasTareas.remove((indice - 1));
 

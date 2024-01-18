@@ -10,9 +10,12 @@ public class Lector {
     }
     public  static String leeCadena(){
 
-        System.out.println("Cadena: ");
+        System.out.println("Espere...");
         return scanner.nextLine();
 
+    }
+    public static  String lectorExtra(){
+        return scanner.nextLine();
     }
 
 
