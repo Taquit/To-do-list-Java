@@ -1,5 +1,7 @@
 import modelo.ListaTareas;
+import modelo.Tarea;
 
+import javax.rmi.ssl.SslRMIClientSocketFactory;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +9,30 @@ import java.util.List;
 public class ListasTareas {
     private Lector lector = new Lector();
     private final List<ListaTareas> listasTareas = new ArrayList<>();
+    private Menu menu = new Menu();
+    private ManejadorTareas tareas = new ManejadorTareas();
+
+    private int validacIndice(){
+
+        System.out.println("Se validara la existencia de la tarea...");
+
+        int indice = Lector.leeOpcion();
+        System.out.println("Indique el índice de la lista de tareas.");
+        if (!validaExistenciaLista()) {
+            return indice;
+        }
+
+
+
+
+        if (indice > listasTareas.size() || indice < 0) {
+            System.out.println("No existen listas de tareas en el índice seleccionado.");
+            indice = 0;
+        }
+
+        return indice;
+
+    }
     public void crearNuevaListas(){
         System.out.println("Crear nueva lista de tareas.");
         System.out.println("Introduzca nueva tarea: ");
@@ -33,43 +59,58 @@ public class ListasTareas {
         }
     }
     public void verTareasDeLista(){
-        System.out.println("Ver tareas de lista.");
+        System.out.println("------Ver tareas de lista.---------");
         int lista = Lector.leeOpcion();
         int indice = validacIndice();
+        String extra = Lector.lectorExtra();
         if (indice ==0){
             return;
         }
     }
 
     public void actualizarListaDeTareas(){
-        System.out.println("Actualizar lista de tareas.");
+        System.out.println("------Actualizar lista de tareas------.");
 
         int indice = validacIndice();
 
         if (indice == 0) {
             return;
         }
+
+        ListaTareas listaActual = listasTareas.get((indice-1));
+        menu.muestraOpcionesTarea();
+        short opcionSelecionada = lector.leeOpcion();
+        switch (opcionSelecionada){
+            case 1:
+                Tarea nuevaTarea = tareas.nuevaTarea();
+                listaActual.agregaTarea(nuevaTarea);
+                break;
+            case 2:
+                Tarea t1 = tareas.eliminaTarea(listaActual);
+                if (t1 !=null){
+                    System.out.println("Se elimino la tarea" + t1.getNombre());
+                }
+                else {
+                    System.out.println("No se pudo eliminar tarea");
+                }
+                break;
+            case 3:
+                Tarea t2 = tareas.marcarTareaFinalzada(listaActual);
+                if(t2 != null){
+                    System.out.println("La tarea" + t2.getNombre() + " se completo el " + t2.getFechaRealizacion());
+
+                }else {
+                    System.out.println("No se puedo eliminar la tarea.");
+                }
+                break;
+            case 4:
+                break;
+            default:
+                System.out.println("Opcioon desconocida");
+        }
     }
 
-    private int validacIndice(){
 
-        int indice = Lector.leeOpcion();
-
-        if (!validaExistenciaLista()) {
-            return indice;
-        }
-
-        System.out.println("Indique el índice de la lista de tareas.");
-
-
-        if (indice > listasTareas.size() || indice < 0) {
-            System.out.println("No existen listas de tareas en el índice seleccionado.");
-            indice = 0;
-        }
-
-        return indice;
-
-    }
     public void elimarListaDeTareas(){
         System.out.println("Preuba12");
         int indice = validacIndice();

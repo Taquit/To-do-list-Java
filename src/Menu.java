@@ -8,4 +8,11 @@ public class Menu {
         System.out.println("5. Eliminar lista de tareas");
         System.out.println("6. Salir ");
     }
+    public void muestraOpcionesTarea(){
+        System.out.println("\n==SELECCIONA UNA OPCIÓN==\n");
+        System.out.println("1. Agregar nueva tarea");
+        System.out.println("2. Eliminar tarea");
+        System.out.println("3. Marcar tarea como realizada");
+        System.out.println("4. Regresar");
+    }
 }
